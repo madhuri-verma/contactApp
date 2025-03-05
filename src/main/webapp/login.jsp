@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,13 +23,15 @@
 			<div class="mb-3">
 				<label for="exampleFormControlInput1" class="form-label">Email</label>
 				<input type="email" class="form-control"
-					id="exampleFormControlInput1" placeholder="Ex: name@example.com" name="email">
+					id="exampleFormControlInput1" placeholder="Ex: name@example.com"
+					name="email">
 			</div>
-			
+
 			<div class="mb-3">
 				<label for="exampleFormControlInput4" class="form-label">Password</label>
 				<input type="password" class="form-control"
-					id="exampleFormControlInput4" placeholder="Ex: 123@" name="password">
+					id="exampleFormControlInput4" placeholder="Ex: 123@"
+					name="password">
 			</div>
 
 			<button type="submit" class="btn btn-primary">Login</button>

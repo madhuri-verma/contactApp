@@ -28,12 +28,18 @@ public class UserServiceImp implements UserService {
 
 	@Override
 	public boolean login(String email, String pass) {
-	Optional<User> user =	userDao.findByEmail(email);
-	
-	if(user.isPresent() && user.get().getPassword().equals(pass)) {
-		return true;
-	}
+		Optional<User> user = userDao.findByEmail(email);
+
+		if (user.isPresent() && user.get().getPassword().equals(pass)) {
+			return true;
+		}
 		return false;
+	}
+
+	@Override
+	public User getUserByEmail(String email) {
+		Optional<User> opt = userDao.findByEmail(email);
+		return opt.get();
 	}
 
 }

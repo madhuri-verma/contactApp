@@ -19,7 +19,7 @@ import lombok.Data;
 @Table(name = "user_info")
 @Data
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer uid;
@@ -27,7 +27,7 @@ public class User {
 	private String name;
 
 	@Column(unique = true)
-	private String email; 
+	private String email;
 
 	private Long phone;
 
@@ -42,7 +42,5 @@ public class User {
 
 	@OneToMany(mappedBy = "user")
 	private List<Contact> contacts;
-	
-	
-	
+
 }
