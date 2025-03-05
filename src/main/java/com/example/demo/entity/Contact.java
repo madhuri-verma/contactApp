@@ -2,8 +2,7 @@ package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
@@ -20,8 +19,7 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 @Table(name = "contact_info")
-@Getter
-@Setter
+@Data
 
 public class Contact {
 
