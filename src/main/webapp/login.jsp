@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Contact App</title>
+<title>Insert title here</title>
+
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -14,35 +15,26 @@
 <body>
 	<div class="container">
 
-		<h1>Register</h1>
+		<h1>Login</h1>
 		<h4>${msg}</h4>
 
-		<form action="register" method="post">
+		<form action="login" method="post">
 
 			<div class="mb-3">
 				<label for="exampleFormControlInput1" class="form-label">Email</label>
 				<input type="email" class="form-control"
 					id="exampleFormControlInput1" placeholder="Ex: name@example.com" name="email">
 			</div>
-			<div class="mb-3">
-				<label for="exampleFormControlInput2" class="form-label">Name</label>
-				<input type="text" class="form-control"
-					id="exampleFormControlInput2" placeholder="EX: Dinga" name="name">
-			</div>
-			<div class="mb-3">
-				<label for="exampleFormControlInput3" class="form-label">Phone</label>
-				<input type="number" class="form-control"
-					id="exampleFormControlInput3" placeholder="Ex: 7392792595" name="phone">
-			</div>
+			
 			<div class="mb-3">
 				<label for="exampleFormControlInput4" class="form-label">Password</label>
 				<input type="password" class="form-control"
 					id="exampleFormControlInput4" placeholder="Ex: 123@" name="password">
 			</div>
 
-			<button type="submit" class="btn btn-primary">Register</button>
+			<button type="submit" class="btn btn-primary">Login</button>
 
-			<a type="button" href="/login" class="btn btn-link">Login</a>
+			<a type="button" href="/register" class="btn btn-link">Register</a>
 		</form>
 	</div>
 </body>
