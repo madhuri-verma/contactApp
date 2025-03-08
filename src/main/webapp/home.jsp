@@ -67,7 +67,7 @@
 				<td><%=contact.getPhone()%></td>
 				<td><%=contact.getAdharNo()%></td>
 				<td>
-					<a href="update?cid=<%=contact.getCid() %>"  class="btn btn-success">Update</a>
+					<a href="/update?cid=<%=contact.getCid() %>"  class="btn btn-success">Update</a>
 				</td>
 				<td>
 					<a href="/delete?cid=<%=contact.getCid() %>" class="btn btn-danger">Delete</a>

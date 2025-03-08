@@ -56,6 +56,7 @@ public class ContactController {
 	}
 	
 	@GetMapping("/delete")
+	
 	public ModelAndView deleteContact(@RequestParam String cid) {
 		
 		Integer id = Integer.parseInt(cid);
@@ -63,20 +64,52 @@ public class ContactController {
 		ModelAndView mv = new ModelAndView("home.jsp");
 		
 		Contact contact = contactService.getById(id);
+		
 		mv.addObject("contacts", contact.getUser().getContacts());
+		
 		boolean deleted = contactService.deleteContact(id);
 		
 		
 		if(deleted) {
-			mv.addObject("msg", "Deleted");
 			
-		}
+			mv.addObject("msg", "Deleted");		
+			
+		}		
+		return mv;
+	}
+	
+	@GetMapping("/update")
+	public ModelAndView update(@RequestParam String cid) {
+		
+		Integer id = Integer.parseInt(cid);
+		
+		Contact contact = contactService.getById(id);
+		
+		ModelAndView mv = new ModelAndView("update.jsp");
+		
+		mv.addObject("contacts", contact);
 		
 		return mv;
 	}
 	
-	
-	
+	@PostMapping("/update")
+	public ModelAndView updateContact(Contact contacts) {
+		
+		Contact dbcontact = contactService.getById(contacts.getCid());
+		dbcontact.setName(contacts.getName());
+		dbcontact.setPhone(contacts.getPhone());
+		dbcontact.setAdharNo(contacts.getAdharNo());
+		
+		ModelAndView mv = new ModelAndView("home.jsp");
+		mv.addObject("contacts", dbcontact.getUser().getContacts());
+		boolean updated = contactService.saveContact(dbcontact);
+				
+		if(updated) {
+			mv.addObject("msg", "Data Updated");
+		}
+				
+		return mv;
+	}
 	
 	
 	
