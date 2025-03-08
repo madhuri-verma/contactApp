@@ -10,4 +10,6 @@ public interface UserService {
 
 	User getUserByEmail(String email);
 
+	User getById(Integer uid);
+
 }

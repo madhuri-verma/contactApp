@@ -16,6 +16,7 @@
 </head>
 <body>
 	<h1>Welcome to Home Page</h1>
+	<h2>${msg}</h2>
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">Navbar</a>
@@ -28,13 +29,11 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="#">Home</a></li>
+						aria-current="page" href="/add-contacts">Add</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">Features</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="#">Pricing</a>
-					</li>
-					<li class="nav-item"><a class="nav-link disabled"
-						aria-disabled="true">Disabled</a></li>
+					
+					
 				</ul>
 			</div>
 		</div>
@@ -52,7 +51,7 @@
 				<th scope="col">Cid</th>
 				<th scope="col">Name</th>
 				<th scope="col">Phone</th>
-				<th scope="col">Adhar No</th>
+				<th scope="col">Aadhar No</th>
 				<th scope="col">Update</th>
 				<th scope="col">Delete</th>
 			</tr>
@@ -68,10 +67,10 @@
 				<td><%=contact.getPhone()%></td>
 				<td><%=contact.getAdharNo()%></td>
 				<td>
-					<button type="button" class="btn btn-success">Update</button>
+					<a href="update?cid=<%=contact.getCid() %>"  class="btn btn-success">Update</a>
 				</td>
 				<td>
-					<button type="button" class="btn btn-danger">Delete</button>
+					<a href="/delete?cid=<%=contact.getCid() %>" class="btn btn-danger">Delete</a>
 				</td>
 			</tr>
 			<%

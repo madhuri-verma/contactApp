@@ -14,6 +14,7 @@ import com.example.demo.service.ContactService;
 import com.example.demo.service.UserService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller
@@ -61,10 +62,18 @@ public class UserController {
 		
 		boolean login = userService.login(email,pass);
 		
+		
+		
 		ModelAndView mv = new ModelAndView();
 		if(login) {
 			
 			User user = userService.getUserByEmail(email);
+			
+			HttpSession session = request.getSession(true);
+			session.setAttribute("uid", user.getUid());
+			
+			mv.addObject("userName", user.getName());
+			
 			List<Contact> contact = user.getContacts();
 			if(contact!=null) {
 				
@@ -78,6 +87,8 @@ public class UserController {
 			mv.setViewName("login.jsp");
 			mv.addObject("msg","invalid credentials");
 		}
+		
+		
 		return mv;
 	}
 	

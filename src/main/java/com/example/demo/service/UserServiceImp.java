@@ -42,4 +42,10 @@ public class UserServiceImp implements UserService {
 		return opt.get();
 	}
 
+	@Override
+	public User getById(Integer uid) {
+		User user = userDao.getById(uid);
+		return user;
+	}
+
 }

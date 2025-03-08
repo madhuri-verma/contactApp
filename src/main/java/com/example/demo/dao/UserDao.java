@@ -25,4 +25,11 @@ public class UserDao {
 
 		return saveUser != null;
 	}
+
+	public User getById(Integer uid) {
+		
+		User user = userRepo.findById(uid).get();
+		
+		return user;
+	}
 }
