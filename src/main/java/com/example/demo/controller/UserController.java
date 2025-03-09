@@ -15,90 +15,81 @@ import com.example.demo.service.UserService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
 
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@GetMapping("/")
 	public ModelAndView welcomePage() {
-		
+
 		ModelAndView mv = new ModelAndView("index.jsp");
-		mv.addObject("user", new User());		
+		mv.addObject("user", new User());
 		return mv;
 	}
-	
-	
-	
+
 	@PostMapping("/register")
 	public ModelAndView register(User user) {
-		
+
 		boolean save = userService.save(user);
-		
+
 		ModelAndView mv = new ModelAndView();
-		
-		if(save) {
+
+		if (save) {
 			mv.addObject("msg", "Registered successfully");
 			mv.setViewName("login.jsp");
-		}
-		else {
+		} else {
 			mv.addObject("msg", "Already Registered");
 			mv.setViewName("index.jsp");
 		}
 		return mv;
 	}
-	
+
 	@PostMapping("/login")
 	public ModelAndView login(HttpServletRequest request) {
-		
+
 		String email = request.getParameter("email");
-		
+
 		String pass = request.getParameter("password");
-		
-		boolean login = userService.login(email,pass);
-		
-		
-		
+
+		boolean login = userService.login(email, pass);
+
 		ModelAndView mv = new ModelAndView();
-		if(login) {
-			
+		if (login) {
+
 			User user = userService.getUserByEmail(email);
-			
+
 			HttpSession session = request.getSession(true);
-			
+
 			session.setAttribute("uid", user.getUid());
-			
+
 			mv.addObject("userName", user.getName());
-			
+
 			List<Contact> contact = user.getContacts();
-			
-			if(contact!=null) {
-				
+
+			if (contact != null) {
+
 				mv.addObject("contacts", contact);
-			}else {
+			} else {
 				mv.addObject("msg", "No Data Found");
 			}
 			mv.setViewName("home.jsp");
-		}
-		else {
+		} else {
 			mv.setViewName("login.jsp");
-			mv.addObject("msg","invalid credentials");
+			mv.addObject("msg", "invalid credentials");
 		}
 		return mv;
 	}
-	
+
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request) {
-		
+
 		HttpSession session = request.getSession(false);
-		
+
 		session.invalidate();
-		
+
 		return "login.jsp";
-	}	
+	}
 }

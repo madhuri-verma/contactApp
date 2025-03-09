@@ -3,9 +3,12 @@ package com.example.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.demo.entity.Contact;
 import com.example.demo.entity.User;
+import com.example.demo.service.ContactService;
 import com.example.demo.service.UserService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,6 +19,9 @@ public class APIController {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private ContactService contactService;
 
 	@GetMapping("/login")
 	public String login() {
@@ -45,5 +51,24 @@ public class APIController {
 		}
 
 		return mv;
+	}
+
+	@GetMapping("/update")
+	public ModelAndView update(@RequestParam String cid) {
+
+		Integer id = Integer.parseInt(cid);
+
+		Contact contact = contactService.getById(id);
+
+		ModelAndView mv = new ModelAndView("update.jsp");
+
+		mv.addObject("contacts", contact);
+
+		return mv;
+	}
+
+	@GetMapping("/add-contacts")
+	public String addContacts() {
+		return "contactAdd.jsp";
 	}
 }

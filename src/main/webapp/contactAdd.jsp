@@ -13,7 +13,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">Navbar</a>
 			<button class="navbar-toggler" type="button"
@@ -26,17 +26,16 @@
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/home">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Logout</a>
-					</li>
-					
-					
+					<li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+
+
 				</ul>
 			</div>
 		</div>
 	</nav>
 	<div class="container">
 
-	<h2>Add Contacts Of User</h2>
+		<h2>Add Contacts Of User</h2>
 
 		<form action="add-contacts" method="post">
 
@@ -62,7 +61,6 @@
 
 		</form>
 
-	</div>
 	</div>
 </body>
 </html>

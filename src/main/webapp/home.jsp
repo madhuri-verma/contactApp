@@ -70,10 +70,11 @@
 					class="btn btn-danger">Delete</a></td>
 			</tr>
 			<%
-			}}
+			}
+			}
 			%>
 		</tbody>
 	</table>
-	
+
 </body>
 </html>

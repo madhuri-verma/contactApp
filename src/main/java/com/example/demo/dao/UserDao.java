@@ -27,9 +27,9 @@ public class UserDao {
 	}
 
 	public User getById(Integer uid) {
-		
+
 		User user = userRepo.findById(uid).get();
-		
+
 		return user;
 	}
 }
