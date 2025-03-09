@@ -43,7 +43,7 @@
 			<div class="mb-3">
 				<label for="exampleFormControlInput1" class="form-label">Cid</label>
 				<input type="text" class="form-control"
-					id="exampleFormControlInput1" name="cid" value="${contacts.cid}">
+					id="exampleFormControlInput1" name="cid" value="${contacts.cid}" readonly>
 			</div>
 			<div class="mb-3">
 				<label for="exampleFormControlInput1" class="form-label">Name</label>

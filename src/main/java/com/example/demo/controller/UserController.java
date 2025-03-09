@@ -15,6 +15,8 @@ import com.example.demo.service.UserService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Controller
@@ -22,9 +24,6 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
-	
-	@Autowired
-	private ContactService contactService;
 	
 	@GetMapping("/")
 	public ModelAndView welcomePage() {
@@ -58,6 +57,7 @@ public class UserController {
 	public ModelAndView login(HttpServletRequest request) {
 		
 		String email = request.getParameter("email");
+		
 		String pass = request.getParameter("password");
 		
 		boolean login = userService.login(email,pass);
@@ -70,11 +70,13 @@ public class UserController {
 			User user = userService.getUserByEmail(email);
 			
 			HttpSession session = request.getSession(true);
+			
 			session.setAttribute("uid", user.getUid());
 			
 			mv.addObject("userName", user.getName());
 			
 			List<Contact> contact = user.getContacts();
+			
 			if(contact!=null) {
 				
 				mv.addObject("contacts", contact);
@@ -87,9 +89,16 @@ public class UserController {
 			mv.setViewName("login.jsp");
 			mv.addObject("msg","invalid credentials");
 		}
-		
-		
 		return mv;
 	}
 	
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession(false);
+		
+		session.invalidate();
+		
+		return "login.jsp";
+	}	
 }

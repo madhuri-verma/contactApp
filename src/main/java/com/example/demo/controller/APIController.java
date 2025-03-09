@@ -13,10 +13,10 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class APIController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@GetMapping("/login")
 	public String login() {
 		return "login.jsp";
@@ -28,19 +28,22 @@ public class APIController {
 	}
 
 	@GetMapping("/home")
-	public String home(HttpServletRequest request) {
-		
+	public ModelAndView home(HttpServletRequest request) {
+
 		HttpSession session = request.getSession(false);
 		Integer id = (Integer) session.getAttribute("uid");
-		
-		System.out.println(id+ "+++++++++++++++++++++++++++ID ++++++++++++++++++++");
-		
-		User user = userService.getById(id);
-		System.out.println(user.getContacts() + "++++++++++++++++++++++++ user  ++++++++++++++++++++");
-		
-		ModelAndView mv = new ModelAndView("home.jsp");
-		mv.addObject("contacts", user.getContacts());
 
-		return "home.jsp";
+		ModelAndView mv = new ModelAndView();
+		if (id != null) {
+			User user = userService.getById(id);
+
+			mv.addObject("contacts", user.getContacts());
+			mv.setViewName("home.jsp");
+		} else {
+			mv.addObject("msg", "User Is not logged in");
+			mv.setViewName("login.jsp");
+		}
+
+		return mv;
 	}
 }

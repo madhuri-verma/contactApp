@@ -30,10 +30,8 @@
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/add-contacts">Add</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Features</a>
+					<li class="nav-item"><a class="nav-link" href="logout">Logout</a>
 					</li>
-					
-					
 				</ul>
 			</div>
 		</div>
@@ -66,26 +64,16 @@
 				<td><%=contact.getName()%></td>
 				<td><%=contact.getPhone()%></td>
 				<td><%=contact.getAdharNo()%></td>
-				<td>
-					<a href="/update?cid=<%=contact.getCid() %>"  class="btn btn-success">Update</a>
-				</td>
-				<td>
-					<a href="/delete?cid=<%=contact.getCid() %>" class="btn btn-danger">Delete</a>
-				</td>
+				<td><a href="/update?cid=<%=contact.getCid()%>"
+					class="btn btn-success">Update</a></td>
+				<td><a href="/delete?cid=<%=contact.getCid()%>"
+					class="btn btn-danger">Delete</a></td>
 			</tr>
 			<%
-			}
+			}}
 			%>
 		</tbody>
 	</table>
-	<%
-	} else {
-	%>
-
-	<h4>${msg}</h4>
-
-	<%
-	}
-	%>
+	
 </body>
 </html>
